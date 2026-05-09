@@ -98,3 +98,8 @@ git clone https://github.com/your-username/telecom-churn-analysis.git
 cd telecom-churn-analysis
 pip install -r requirements.txt
 jupyter notebook
+
+
+👨‍💻 Author
+
+Prabhat Prajapati
