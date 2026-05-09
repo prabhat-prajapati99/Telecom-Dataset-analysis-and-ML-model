@@ -1,175 +1,100 @@
 # Telecom-Dataset-analysis-and-ML-model
 
+# 📊 Telecom Customer Churn Analysis
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecom Customer Churn Analysis</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f5f7fa;
-            color: #333;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .badge {
-            display: inline-block;
-            padding: 5px 10px;
-            background: #3498db;
-            color: #fff;
-            border-radius: 5px;
-            margin: 5px 5px 5px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        ul {
-            line-height: 1.6;
-        }
-        .highlight {
-            color: green;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+## 📌 Project Overview
+This project analyzes telecom customer data to identify churn patterns and predict customer behavior using machine learning models. The goal is to help businesses reduce customer churn by identifying high-risk customers.
 
-<div class="container">
+---
 
-    <h1>📊 Telecom Customer Churn Analysis</h1>
+## 📂 Dataset Information
+- **Total Records:** 7,043  
+- **Total Features:** 21  
+- **Null Values:** 0  
+- **Duplicate Records:** 0  
 
-    <h2>📌 Project Overview</h2>
-    <p>
-        This project analyzes telecom customer data to identify churn patterns and predict customer behavior 
-        using machine learning techniques.
-    </p>
+---
 
-    <h2>📂 Dataset Information</h2>
-    <ul>
-        <li><b>Total Records:</b> 7,043</li>
-        <li><b>Total Features:</b> 21</li>
-        <li><b>Null Values:</b> 0</li>
-        <li><b>Duplicates:</b> 0</li>
-    </ul>
+## 🔧 Data Preprocessing
+- Converted `total_charges` from object → float  
+- Converted `senior_citizen` from 0/1 → Yes/No  
+- Renamed columns (CamelCase → snake_case)  
+- Verified data using:
+  - `df.info()`
+  - `df.isnull().sum()`
 
-    <h3>🔧 Data Preprocessing</h3>
-    <ul>
-        <li>Converted <b>total_charges</b> → float</li>
-        <li>Converted <b>senior_citizen</b> → Yes/No</li>
-        <li>Renamed columns to snake_case</li>
-    </ul>
+---
 
-    <h2>📊 Exploratory Data Analysis</h2>
-    <ul>
-        <li>26.5% customers churned</li>
-        <li>Month-to-month contracts → highest churn</li>
-        <li>Electronic check → high churn rate</li>
-        <li>Low tenure + no add-ons → high risk</li>
-    </ul>
+## 📊 Exploratory Data Analysis (EDA)
+- Univariate & Bivariate Analysis  
+- Outlier Detection using IQR  
 
-    <h2>🤖 Machine Learning Models</h2>
+### 🔍 Key Insights
+- 26.5% customers churned (class imbalance)  
+- Month-to-month contracts have highest churn  
+- Electronic check payment → high churn  
+- Low tenure + no add-ons → high churn risk  
 
-    <table>
-        <tr>
-            <th>Model</th>
-            <th>Accuracy</th>
-            <th>Precision</th>
-            <th>Recall</th>
-            <th>F1 Score</th>
-        </tr>
-        <tr>
-            <td>Logistic Regression</td>
-            <td>80.6%</td>
-            <td>0.66</td>
-            <td>0.56</td>
-            <td>0.60</td>
-        </tr>
-        <tr>
-            <td>Decision Tree</td>
-            <td>72.6%</td>
-            <td>0.63</td>
-            <td>0.54</td>
-            <td>0.58</td>
-        </tr>
-        <tr>
-            <td>Random Forest</td>
-            <td>80.6%</td>
-            <td>0.68</td>
-            <td>0.51</td>
-            <td>0.58</td>
-        </tr>
-        <tr>
-            <td><b>Gradient Boosting 🏆</b></td>
-            <td class="highlight">85.1%</td>
-            <td>0.77</td>
-            <td>0.65</td>
-            <td class="highlight">0.70</td>
-        </tr>
-    </table>
+---
 
-    <h2>🏆 Best Model</h2>
-    <p>
-        <b>Gradient Boosting</b> achieved the best performance with:
-    </p>
-    <ul>
-        <li>Accuracy: 85.1%</li>
-        <li>F1 Score: 0.70</li>
-        <li>AUC: 0.914</li>
-    </ul>
+## 🤖 Machine Learning Models
 
-    <h2>📌 Key Business Insights</h2>
-    <ul>
-        <li>Short tenure customers churn more</li>
-        <li>Contract type impacts retention</li>
-        <li>Payment method affects churn</li>
-    </ul>
+| Model                | Accuracy | Precision | Recall | F1 Score |
+|---------------------|---------|----------|--------|----------|
+| Logistic Regression | 80.6%   | 0.66     | 0.56   | 0.60     |
+| Decision Tree       | 72.6%   | 0.63     | 0.54   | 0.58     |
+| Random Forest       | 80.6%   | 0.68     | 0.51   | 0.58     |
+| Gradient Boosting 🏆 | **85.1%** | 0.77   | 0.65   | **0.70** |
+| KNN (k=7)           | 76.0%   | 0.54     | 0.50   | 0.52     |
+| XGBoost             | 80.4%   | 0.66     | 0.54   | 0.59     |
+| SVM (RBF Kernel)    | 79.8%   | 0.71     | 0.48   | 0.57     |
 
-    <h2>🛠️ Tech Stack</h2>
-    <div>
-        <span class="badge">Python</span>
-        <span class="badge">Pandas</span>
-        <span class="badge">NumPy</span>
-        <span class="badge">Scikit-learn</span>
-        <span class="badge">XGBoost</span>
-    </div>
+---
 
-    <h2>🚀 How to Run</h2>
-    <pre>
+## 🏆 Best Model
+**Gradient Boosting**
+- Accuracy: 85.1%  
+- F1 Score: 0.70  
+- AUC Score: 0.914  
+
+---
+
+## 📉 Model Evaluation
+- ROC Curve  
+- Confusion Matrix  
+- AUC Score Comparison  
+
+---
+
+## ⚙️ Pipeline
+- ColumnTransformer:
+  - StandardScaler (Numerical Features)
+  - OneHotEncoder (Categorical Features)
+- ML Models  
+
+---
+
+## 📌 Business Insights
+- Short tenure customers churn more  
+- Contract type strongly impacts churn  
+- Payment method influences retention  
+- Targeting high-risk users can reduce churn  
+
+---
+
+## 🛠️ Tech Stack
+- Python  
+- Pandas, NumPy  
+- Matplotlib, Seaborn  
+- Scikit-learn  
+- XGBoost  
+
+---
+
+## 🚀 How to Run
+
+```bash
 git clone https://github.com/your-username/telecom-churn-analysis.git
+cd telecom-churn-analysis
 pip install -r requirements.txt
 jupyter notebook
-    </pre>
-
-    <h2>👨‍💻 Author</h2>
-    <p><b>Prabhat Prajapati</b></p>
-
-</div>
-
-</body>
-</html>
